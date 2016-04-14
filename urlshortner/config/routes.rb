@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  resources :short_urls
+  delete 'short_urls' => 'short_urls#destroy'
+  get '/:id' => 'short_urls#original_url'
+  resources :short_visits
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
