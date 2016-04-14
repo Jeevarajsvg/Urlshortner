@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   delete 'short_urls' => 'short_urls#destroy'
   get '/:id' => 'short_urls#original_url'
   resources :short_visits
+  get 'short_visits/show' => 'short_visits#show'
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
