@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414174324) do
+ActiveRecord::Schema.define(version: 20160415112941) do
 
   create_table "shorl_urls", force: :cascade do |t|
     t.string   "original_url", limit: 255
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160414174324) do
 
   create_table "short_visits", force: :cascade do |t|
     t.integer  "short_url_id",         limit: 4
-    t.integer  "visitor_ip",           limit: 4
+    t.string   "visitor_ip",           limit: 255
     t.string   "visitor_city",         limit: 255
     t.string   "visitor_state",        limit: 255
     t.string   "visitor_country_iso2", limit: 255

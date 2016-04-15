@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def remote_ip
-    if request.remote_ip == '::1'
+    if request.remote_ip == '127.0.0.1'
       # In Local it will always get '127.0.0.1'
       '106.51.27.135'
     else

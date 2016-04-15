@@ -7,20 +7,22 @@
       <th>Shorty Url</th>
       <th>Visits Count</th>
       <th>Action</th>
+      <th>View Location</th>
     </tr>
     </thead>
     <tbody>
     <%@short_urls.try(:each) do |short_url|%>
         <tr>
           <td><%=short_url.original_url%></td>
-          <td><%=link_to "http://localhost:3000/"+short_url.shorty,"/#{short_url.shorty}"%></td>
+          <td><%=link_to "shorten_url/"+short_url.shorty,"/#{short_url.shorty}",target: '_blank'%></td> <!-- used target blank to open in Seperate Window-->
           <td><%=short_url.visits_count%></td>
-          <td><%= link_to "Delete",short_urls_path(short_url_id: short_url), :method => :delete,data: { confirm: 'Are you sure?' } ,class:'btn btn-danger' %>
-          </td><%= link_to "Recent Location",short_visits_show_path(short_url_id:short_url.id), class:'btn btn-primary' %>
+          <td><%= link_to "Delete",short_urls_path(short_url_id: short_url), :method => :delete,data: { confirm: 'Are you sure?' } ,class:'btn btn-danger' %></td>
+          <td><%= link_to "Recent Location",short_visits_show_path(short_url_id:short_url.id), class:'btn btn-primary' %></td>
 
         </tr>
     <%end%>
     </tbody>
   </table>
   <%= button_to "Generate Short Url", new_short_url_path, method: :get, class: "btn btn-primary" %>
+  <%= will_paginate @short_urls %>
 </div>
